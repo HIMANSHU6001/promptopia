@@ -8,7 +8,7 @@ const page = () => {
             <br/>
             <span className='orange_gradient'>AI-Powered Prompts</span>
         </h1>
-        <p className='text-center mt-3'>Lorem dolor ipsum dolor sit amet consectetur adipisicing elit. Natus ullam pariatur necessitatibus nulla iste aspernatur voluptatibus quas quis delectus fugit, sunt saepe blanditiis reiciendis voluptates voluptatem tempore mollitia aliquid! Corrupti!</p>
+        <p className='text-center mt-3'>Promptopia is an open-source AI prompting tool for modern world to discover, create and share creative prompts</p>
         <Feed />
     </section>
   )

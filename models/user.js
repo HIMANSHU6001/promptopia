@@ -1,7 +1,10 @@
-
-import sequelize from '../utils/database.js';
+import getSequelize from '@utils/database';
 import { DataTypes } from 'sequelize';
-const User = sequelize.define(
+
+
+const sequelize = await getSequelize();
+
+var UserModel = sequelize.define(
   'User',
   {
     email: {
@@ -19,8 +22,9 @@ const User = sequelize.define(
   },
   {
     // Other model options go here
-  },
+  }
 );
-sequelize.sync({force:true})
 
-export default User;
+await sequelize.sync();
+
+export default UserModel;

@@ -1,13 +1,16 @@
-'use client'
-import React from 'react'
-import { SessionProvider } from 'next-auth/react'
+'use client';
+import userContext from "@utils/userContext";
+import React,{useState} from "react";
 
-const Provider = ({ children, session }) => {
-  return (
-    <SessionProvider session={session}>
-      {children}
-    </SessionProvider>
-  )
+
+const Provider = ({ children }) => {
+    const [user, setUser] = useState(null)
+
+    return (
+        <userContext.Provider value={{user, setUser}}>
+            {children}
+        </userContext.Provider>
+    )
 }
 
-export default Provider
+export default Provider;
