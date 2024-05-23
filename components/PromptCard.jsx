@@ -10,6 +10,7 @@ const PromptCard = ({ post, handleTagClick, handleDelete, handleEdit }) => {
   const { push } = useRouter();
   const { user, setUser } = useContext(userContext);
   const [copied, setCopied] = useState('')
+
   const handleCopy = () => {
     setCopied(post.prompt)
     navigator.clipboard.writeText(post.prompt)

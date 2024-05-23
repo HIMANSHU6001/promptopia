@@ -67,9 +67,17 @@ const Feed = () => {
     }
   }
 
-  // const handleTagClick = {
-  //   let searchResult = fuse.search
-  // }
+  const handleTagClick = (tag) => {
+    let newPosts = [];
+    for (let index = 0; index < orignalPosts.length; index++) {
+      const post = orignalPosts[index];
+      if (post.tag === tag){
+        newPosts.push(post)
+      }
+    }
+    setPosts(newPosts)
+    setSearchText(tag)
+  }
 
   return (
     <section className='feed'>
@@ -86,7 +94,7 @@ const Feed = () => {
       </form>
       <PromptCardList
         data={posts}
-        handleTagClick={() => {handleTagClick}}
+        handleTagClick={handleTagClick}
       />
     </section>
   )
