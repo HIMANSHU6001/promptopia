@@ -1,5 +1,5 @@
 import React from 'react'
-import Feed from '@components/feed'
+import Feed from '../components/Feed'
 const page = () => {
   return (
     <section className='w-full flex-col flex-center'>
