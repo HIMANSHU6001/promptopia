@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/postgres": "^0.8.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.0",
