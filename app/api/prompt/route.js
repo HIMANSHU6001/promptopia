@@ -1,10 +1,9 @@
-import PromptModel from "@models/prompts";
 import UserModel from "@models/user";
+import PromptModel from "@models/prompts";
 import getSequelize from "@utils/database";
 
 
-export const GET = async (req) => {
-    
+const handler = async (req) => {
     try {
         console.log("Fetching all prompts");
         const sequelize = await getSequelize();
@@ -28,3 +27,5 @@ export const GET = async (req) => {
         })
     }
 }
+
+export {handler as POST, handler as GET}

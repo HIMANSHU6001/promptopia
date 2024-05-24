@@ -5,9 +5,20 @@ let sequelize;
 
 async function getSequelize() {
   if (!sequelize) {
-    sequelize = new Sequelize(process.env.POSTGRES_URL,);
+    sequelize = new Sequelize(process.env.POSTGRES_DATABASE, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
+      host: process.env.POSTGRES_HOST,
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: true // added this line to fix certificate error
+        }
+      },
+      pool: {
+        max: 10
+      }
+    });
   }
-
   return sequelize;
 }
 

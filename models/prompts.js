@@ -2,6 +2,7 @@ import getSequelize from '@utils/database.js';
 import { DataTypes } from 'sequelize';
 import UserModel from './user.js';
 
+
 const sequelize = await getSequelize();
 
 var PromptModel = sequelize.define(
