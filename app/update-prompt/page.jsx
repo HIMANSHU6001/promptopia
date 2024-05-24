@@ -8,7 +8,7 @@ import userContext from '@utils/userContext'
 const UpdatePrompt = ({params}) => {
   const { user, setUser } = useContext(userContext)
   const router = useRouter()
-  const {id: promptId} = router.query
+  const promptId = router.query && router.query.id
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
