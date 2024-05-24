@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from '@components/Form'
 import userContext from '@utils/userContext'
@@ -55,6 +55,7 @@ const UpdatePrompt = ({params}) => {
 
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <Form
       type="Update"
       post={post}
@@ -62,6 +63,7 @@ const UpdatePrompt = ({params}) => {
       submitting={submitting}
       handleSubmit={updatePrompt}
     />
+    </Suspense>
   )
 }
 
