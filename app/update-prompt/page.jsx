@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useContext, useEffect, Suspense } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import React, { useState, useContext, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Form from '@components/Form'
 import userContext from '@utils/userContext'
 
@@ -8,9 +8,8 @@ import userContext from '@utils/userContext'
 const UpdatePrompt = ({params}) => {
   const { user, setUser } = useContext(userContext)
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const {id: promptId} = router.query
   const [submitting, setSubmitting] = useState(false);
-  const promptId = searchParams.get('id');
   const [post, setPost] = useState({
     prompt: "",
     tag: ""
