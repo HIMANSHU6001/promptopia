@@ -12,7 +12,7 @@ async function getSequelize() {
       dialectOptions: {
         ssl: {
           require: true,
-          rejectUnauthorized: true // added this line to fix certificate error
+          rejectUnauthorized: false // added this line to fix certificate error
         }
       },
       pool: {
