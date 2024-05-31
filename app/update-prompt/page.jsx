@@ -16,6 +16,7 @@ const UpdatePrompt = ({params}) => {
   })
 
   useEffect(() => {
+    console.log("promptId = ",promptId);
     const getPromptDetails = async () => {
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "GET"
@@ -25,7 +26,6 @@ const UpdatePrompt = ({params}) => {
         prompt: data.prompt,
         tag: data.tag
       });
-      console.log("data = ",data);
     }
 
     if (promptId) getPromptDetails();
