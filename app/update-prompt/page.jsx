@@ -1,14 +1,12 @@
 'use client'
-import React, { useState, useContext, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router';
 import Form from '@components/Form'
-import userContext from '@utils/userContext'
 
 
 const UpdatePrompt = ({params}) => {
-  const { user, setUser } = useContext(userContext)
   const router = useRouter()
-  const promptId = router.query && router.query.id
+  const [promptId, setPromptId] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
     prompt: "",
@@ -16,6 +14,7 @@ const UpdatePrompt = ({params}) => {
   })
 
   useEffect(() => {
+    setPromptId(router.query.id);
     console.log("promptId = ",promptId);
     const getPromptDetails = async () => {
       const response = await fetch(`/api/prompt/${promptId}`, {
@@ -28,8 +27,8 @@ const UpdatePrompt = ({params}) => {
       });
     }
 
-    if (promptId) getPromptDetails();
-  },[promptId])
+    if (router.query.id) getPromptDetails();
+  },[router.query])
 
 
   const updatePrompt = async (e) => {
