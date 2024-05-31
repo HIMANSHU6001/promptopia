@@ -1,11 +1,12 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { signOut } from "firebase/auth";
-import { auth, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "@utils/firebase-config";
+import { auth, GoogleAuthProvider, signInWithPopup } from "@utils/firebase-config";
 import userContext from "@utils/userContext";
 import { useContext } from "react";
+
 
 const Nav = () => {
     const { user, setUser } = useContext(userContext)
@@ -48,7 +49,7 @@ const Nav = () => {
     const handleSignout = async () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            navigate("/");
+            // navigate("/");
             setUser(null);
             console.log("Signed out successfully")
         }).catch((error) => {
