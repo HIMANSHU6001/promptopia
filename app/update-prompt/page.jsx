@@ -1,10 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'next/navigation';
 import Form from '@components/Form'
 
 const UpdatePrompt = () => {
-  const location = useLocation()
   const [promptId, setPromptId] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -13,12 +11,14 @@ const UpdatePrompt = () => {
   })
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const id = params.get('id');
-    if (id) {
-      setPromptId(id);
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      if (id) {
+        setPromptId(id);
+      }
     }
-  }, [location.search]);
+  }, []);
 
   useEffect(() => {
     console.log("Fetching prompt details", promptId);
