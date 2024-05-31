@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
 import Form from '@components/Form'
 
-
 const UpdatePrompt = ({params}) => {
   const router = useRouter()
   const [promptId, setPromptId] = useState(null);
@@ -14,21 +13,26 @@ const UpdatePrompt = ({params}) => {
   })
 
   useEffect(() => {
-    setPromptId(router.query.id);
-    console.log("promptId = ",promptId);
-    const getPromptDetails = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`, {
-        method: "GET"
-      })
-      const data = await response.json();
-      setPost({
-        prompt: data.prompt,
-        tag: data.tag
-      });
+    if (router.query.id) {
+      setPromptId(router.query.id);
     }
+  }, [router.query]);
 
-    if (router.query.id) getPromptDetails();
-  },[router.query])
+  useEffect(() => {
+    if (promptId) {
+      const getPromptDetails = async () => {
+        const response = await fetch(`/api/prompt/${promptId}`, {
+          method: "GET"
+        })
+        const data = await response.json();
+        setPost({
+          prompt: data.prompt,
+          tag: data.tag
+        });
+      }
+      getPromptDetails();
+    }
+  }, [promptId]);
 
 
   const updatePrompt = async (e) => {
