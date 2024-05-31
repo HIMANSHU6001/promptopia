@@ -25,7 +25,9 @@ const UpdatePrompt = ({params}) => {
         prompt: data.prompt,
         tag: data.tag
       });
+      console.log("data = ",data);
     }
+
     if (promptId) getPromptDetails();
   },[promptId])
 
