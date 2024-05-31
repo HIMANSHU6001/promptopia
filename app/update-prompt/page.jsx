@@ -1,9 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Form from '@components/Form'
 
-const UpdatePrompt = ({params}) => {
+const UpdatePrompt = () => {
   const router = useRouter()
   const [promptId, setPromptId] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -13,10 +13,10 @@ const UpdatePrompt = ({params}) => {
   })
 
   useEffect(() => {
-    if (router.query.id) {
-      setPromptId(router.query.id);
+    if (router.params.id) {
+      setPromptId(router.params.id);
     }
-  }, [router.query]);
+  }, [router.params]);
 
   useEffect(() => {
     if (promptId) {
