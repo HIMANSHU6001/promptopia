@@ -24,20 +24,6 @@ const Nav = () => {
         }
     };
 
-    const signInWithGithub = async () => {
-        const provider = new GithubAuthProvider();
-        provider.addScope('profile');
-        console.log(provider);
-        try {
-            console.log("TRYING TO LOG IN");
-            const result = await signInWithPopup(auth, provider);
-            console.log('signed in with github , result :', result);
-            return result.user;
-        } catch (error) {
-            console.error(error);
-            return null;
-        }
-    };
 
     const signIn = async (provider) => {
         let user;
@@ -45,10 +31,7 @@ const Nav = () => {
             console.log('signing in with google');
             user = await signInWithGoogle();
             console.log(" signed in with google");
-        } else if (provider === 'github') {
-            console.log('signing in with github');
-            user = await signInWithGithub();
-        }
+        } 
         console.log(user);
         setUser(user);
         const { email, displayName, photoURL } = user;
@@ -65,7 +48,7 @@ const Nav = () => {
     const handleSignout = async () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            // navigate("/");
+            navigate("/");
             setUser(null);
             console.log("Signed out successfully")
         }).catch((error) => {
@@ -119,15 +102,6 @@ const Nav = () => {
                             className="outline_btn"
                         >
                             Sign in with Google
-                        </button>
-
-                        <button
-                            type='button'
-                            key="github"
-                            onClick={() => signIn('github')}
-                            className="outline_btn"
-                        >
-                            Sign in with GitHub
                         </button>
                     </>}
             </div>
@@ -184,15 +158,6 @@ const Nav = () => {
                                 className="outline_btn"
                             >
                                 Sign in with Google
-                            </button>
-
-                            <button
-                                type='button'
-                                key="github"
-                                onClick={() => signIn('github')}
-                                className="outline_btn"
-                            >
-                                Sign in with GitHub
                             </button>
                         </>
                     )}
