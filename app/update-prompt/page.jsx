@@ -13,12 +13,14 @@ const UpdatePrompt = () => {
   })
 
   useEffect(() => {
+    console.log(router.params.id);
     if (router.params.id) {
       setPromptId(router.params.id);
     }
   }, [router.params]);
 
   useEffect(() => {
+    console.log("Fetching prompt details", promptId);
     if (promptId) {
       const getPromptDetails = async () => {
         const response = await fetch(`/api/prompt/${promptId}`, {
