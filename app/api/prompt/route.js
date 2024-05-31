@@ -1,6 +1,6 @@
-import UserModel from "@models/user";
-import PromptModel from "@models/prompts";
-import getSequelize from "@utils/database";
+import UserModel from "@models/user.js";
+import PromptModel from "@models/prompts.js";
+import getSequelize from "@utils/database.js";
 
 
 const handler = async (req) => {
