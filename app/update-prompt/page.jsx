@@ -14,7 +14,7 @@ const UpdatePrompt = () => {
 
   useEffect(() => {
     console.log(router.params.id);
-    if (router.params.id) {
+    if (router.params && router.params.id) {
       setPromptId(router.params.id);
     }
   }, [router.params]);
